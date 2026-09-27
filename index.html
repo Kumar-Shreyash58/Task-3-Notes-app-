@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loginPage">
+
+   <div id="loginPage">
+
+    <div class="loginCard">
+
+        <div class="noteIcon">
+            📝
+        </div>
+
+        <h1>My Notes</h1>
+
+        <p class="loginTagline">
+            Capture your thoughts, organize your ideas,
+            make it happen.
+        </p>
+
+        <input
+            type="text"
+            id="nameInput"
+            placeholder="Enter your name or email"
+            aria-label="Enter your name or email"
+            tabindex="1"
+        >
+
+        <button
+            onclick="login()"
+            aria-label="Login"
+            tabindex="2"
+        >
+            Login →
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+    <div id="app" class="hidden">
+        <header>
+
+    <h1>My Notes</h1>
+
+    <div>
+
+        Welcome,
+        <span id="userName"></span>
+
+        <button
+            onclick="toggleDarkMode()"
+            aria-label="Toggle dark mode"
+            tabindex="3"
+        >
+            🌙
+        </button>
+
+        <button
+            onclick="logout()"
+            aria-label="Logout"
+            tabindex="4"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+        <div class="tools">
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search notes..."
+                oninput="displayNotes()"
+                aria-label="Search notes"
+                tabindex="4"
+            >
+            <select
+                id="sortOption"
+                onchange="displayNotes()"
+                aria-label="Sort notes"
+                tabindex="5"
+            >
+                <option value="modified">Date Modified</option>
+                <option value="created">Date Created</option>
+                <option value="title">Alphabetical</option>
+                <option value="category">Category</option>
+            </select>
+            <button
+                onclick="createNote()"
+                aria-label="Create new note"
+                tabindex="6"
+            >
+                + New Note
+            </button>
+
+        </div>
+    <div class="categories">
+
+    <button
+        onclick="filterCategory('All')"
+        aria-label="Show all notes"
+        tabindex="7"
+    >
+        All
+    </button>
+
+    <button
+        onclick="filterCategory('Work')"
+        ondragover="allowDrop(event)"
+        ondrop="dropIntoCategory(event, 'Work')"
+        aria-label="Show work notes"
+        tabindex="8"
+    >
+        Work
+    </button>
+
+    <button
+        onclick="filterCategory('Personal')"
+        ondragover="allowDrop(event)"
+        ondrop="dropIntoCategory(event, 'Personal')"
+        aria-label="Show personal notes"
+        tabindex="9"
+    >
+        Personal
+    </button>
+
+    <button
+        onclick="filterCategory('Study')"
+        ondragover="allowDrop(event)"
+        ondrop="dropIntoCategory(event, 'Study')"
+        aria-label="Show study notes"
+        tabindex="10"
+    >
+        Study
+    </button>
+
+</div>
+        <div id="notesContainer"></div>
+        <div id="editor" class="hidden">
+            <input
+                id="noteTitle"
+                type="text"
+                placeholder="Note title"
+                aria-label="Note title"
+                tabindex="7"
+            >
+            <div
+                id="noteContent"
+                class="editorContent"
+                contenteditable="true"
+                aria-label="Note content"
+                tabindex="8"
+            ></div>
+            <div class="formatButtons">
+
+                <button onclick="formatText('bold')">
+                    Bold
+                </button>
+
+                <button onclick="formatText('italic')">
+                    Italic
+                </button>
+
+                <button onclick="formatText('underline')">
+                    Underline
+                </button>
+            </div>
+            <select id="noteCategory" aria-label="Select category">
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Study">Study</option>
+            </select>
+            <label>
+                Category color:
+                <input id="categoryColor" type="color" value="#ffffff">
+            </label>
+            <input
+                id="backgroundImage"
+                type="text"
+                placeholder="Background image URL"
+                aria-label="Background image URL"
+            >
+            <p>
+                Words:
+                <span id="wordCount">0</span>/400
+            </p>
+            <button onclick="closeEditor()" tabindex="9">
+                Done
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
